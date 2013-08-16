@@ -9,5 +9,4 @@ Desktop.ini
 $RECYCLE.BIN/
 
 # Custom
-www/
-!www/luacms/
+www/*.*
