@@ -1,5 +1,6 @@
-dofile("www/luacms/cgiutils.lua")
-dofile("www/luacms/table2file.lua")
+dofile("config.lua")
+dofile(config.path().."luacms/cgiutils.lua")
+dofile(config.path().."luacms/table2file.lua")
 
 -- LuaCMS: a slimmer solution to making websites
 -- 

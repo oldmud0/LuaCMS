@@ -1,16 +1,16 @@
 -- LuaCMS page stack/homepage
 
-dofile("www/luacms/luacms.lua")
-dofile("www/luacms/customizable.lua")
+dofile("config.lua")
+dofile(config.path().."luacms/luacms.lua")
 
 index = table.load("lua_data/luacms_index.txt")
 
 luacms.printheader()
 print [[<head><title>Home</title></head><body>]]
-custom.navigation()
+config.navigation()
 
 luacms.loadpage("1")
 
 
-custom.footer()
+config.footer()
 print [[</body></html>]]

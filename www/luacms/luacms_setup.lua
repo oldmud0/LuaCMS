@@ -1,4 +1,5 @@
-dofile("www/luacms/luacms.lua")
+dofile("config.lua")
+dofile(config.path().."luacms/luacms.lua")
 
 luacms.printheader()
 
