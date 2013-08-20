@@ -28,8 +28,11 @@ end
 
 
 -- Takes some tags and organizes them so that they are suitable for printing.
+-- TODO: Replace print statements to create one return statement.
 function luacms.processtags(tags)
   assert(tags,"(could not process tags)")
+
+  if tags == "" then return "" end
 
   local tags_t = split(tags,";")
 
@@ -83,11 +86,14 @@ function luacms.loadpage(page_id)
 
   local page = table.load("lua_data/page_"..page_id..".txt")
   assert(page,"Could not load page: File not found")
-  
+
+
   print ([[<h2>]]..page.title..[[</h2>
-    <br><i>Last updated ]]..os.date("%c",page.date)..[[</i><br>
-    Tags: ]]..luacms.processtags(page.tags)..[[<br>
-    <p>]]..page.content..[[</p><br><hr>]])
+  <i>Last updated ]]..os.date("%c",page.date)..[[</i><br>
+  Tags: ]])
+  luacms.processtags(page.tags)
+  print ([[<br>
+  <p>]]..page.content..[[</p><br><hr>]])
 end
 
 
@@ -180,7 +186,7 @@ function luacms.setup()
     local page = {["id"]=1, ["title"]="Main Page",["content"]=[[Welcome to LuaCMS! LuaCMS has been installed properly.<br>
     This is the default main page. Please edit it after you have familiarized yourself with the control panel.<br>
     Visitors: the admin has not created any content on this page yet. Please contact the webmaster if you continue to see this page.]],
-    ["tags"]="",["date"]=os.time()}
+    ["tags"]="home",["date"]=os.time()}
 
     index[1] = {["id"]=1,["title"]=page.title,["tags"]=page.tags,["date"]=page.date}
     table.save(index,"lua_data/luacms_index.txt")
