@@ -9,7 +9,10 @@ luacms.printheader()
 print [[<head><title>Home</title></head><body>]]
 config.navigation()
 
-luacms.loadpage("1")
+for k,v in ipairs(index) do 
+	print(k)
+	luacms.loadpage(k)
+end
 
 
 config.footer()
